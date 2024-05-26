@@ -1,0 +1,250 @@
+{
+  "shoppingList": [
+    {
+      "id": 1,
+      "name": "Owoce",
+      "products": [
+        {
+          "id": 12,
+          "name": "Banany"
+        },
+        {
+          "id": 13,
+          "name": "Borówki"
+        },
+        {
+          "id": 14,
+          "name": "Rabarbar"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Mięso",
+      "products": [
+        {
+          "id": 41,
+          "name": "Kurczak"
+        },
+        {
+          "id": 42,
+          "name": "Szynka"
+        },
+        {
+          "id": 43,
+          "name": "Parówki"
+        },
+        {
+          "id": 44,
+          "name": "Łosoś"
+        }
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Owoce",
+      "products": [
+        {
+          "id": 11,
+          "name": "Jabłka"
+        },
+        {
+          "id": 12,
+          "name": "Banany"
+        },
+        {
+          "id": 13,
+          "name": "Borówki"
+        },
+        {
+          "id": 14,
+          "name": "Rabarbar"
+        },
+        {
+          "id": 15,
+          "name": "Maliny"
+        },
+        {
+          "id": 16,
+          "name": "Truskawki"
+        },
+        {
+          "id": 17,
+          "name": "Brzoskiwnie"
+        },
+        {
+          "id": 18,
+          "name": "Winogrono"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Warzywa",
+      "products": [
+        {
+          "id": 21,
+          "name": "Ziemniaki"
+        },
+        {
+          "id": 22,
+          "name": "Pomidory"
+        },
+        {
+          "id": 23,
+          "name": "Awokado"
+        },
+        {
+          "id": 24,
+          "name": "Rukola"
+        },
+        {
+          "id": 25,
+          "name": "Brokuł"
+        },
+        {
+          "id": 26,
+          "name": "Pietruszka nać"
+        },
+        {
+          "id": 27,
+          "name": "Pietruszka"
+        },
+        {
+          "id": 28,
+          "name": "Koperek"
+        },
+        {
+          "id": 29,
+          "name": "Por"
+        },
+        {
+          "id": 210,
+          "name": "Jarmuż"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Nabiał",
+      "products": [
+        {
+          "id": 31,
+          "name": "Jajka"
+        },
+        {
+          "id": 32,
+          "name": "Ser żółty"
+        },
+        {
+          "id": 33,
+          "name": "Ser feta"
+        },
+        {
+          "id": 34,
+          "name": "Jogurt"
+        },
+        {
+          "id": 35,
+          "name": "Twaróg"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Mięso",
+      "products": [
+        {
+          "id": 41,
+          "name": "Kurczak"
+        },
+        {
+          "id": 42,
+          "name": "Szynka"
+        },
+        {
+          "id": 43,
+          "name": "Parówki"
+        },
+        {
+          "id": 44,
+          "name": "Łosoś"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Mrożonki",
+      "products": [
+        {
+          "id": 51,
+          "name": "wiśnie"
+        },
+        {
+          "id": 52,
+          "name": "szpinak"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Ryże, kasze, makarony",
+      "products": [
+        {
+          "id": 61,
+          "name": "Kasza jaglana"
+        },
+        {
+          "id": 62,
+          "name": "Kasza gryczana biała"
+        },
+        {
+          "id": 63,
+          "name": "Makaron penne"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Artykuły domowe",
+      "products": [
+        {
+          "id": 71,
+          "name": "Mydło"
+        },
+        {
+          "id": 72,
+          "name": "Papier do pieczenia"
+        },
+        {
+          "id": 73,
+          "name": "Ręcznik papierowy"
+        },
+        {
+          "id": 74,
+          "name": "Kostki do zmwarki"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Inne",
+      "products": [
+        {
+          "id": 81,
+          "name": "Kawa"
+        },
+        {
+          "id": 82,
+          "name": "Herbata malinowa"
+        },
+        {
+          "id": 83,
+          "name": "Czekolada"
+        }
+      ]
+    }
+  ]
+}
