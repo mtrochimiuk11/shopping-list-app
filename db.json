@@ -1,87 +1,127 @@
 {
   "shoppingList": [
     {
-      "id": 1,
-      "name": "Owoce",
+      "id": "2",
+      "name": "Warzywa",
       "products": [
         {
-          "id": 12,
-          "name": "Banany"
+          "id": 25,
+          "name": "Brokuł",
+          "isBought": false
         },
         {
-          "id": 13,
-          "name": "Borówki"
+          "id": 11,
+          "name": "Marchewka",
+          "isBought": false
         },
         {
-          "id": 14,
-          "name": "Rabarbar"
+          "id": 21,
+          "name": "Ziemniaki",
+          "isBought": false
+        },
+        {
+          "id": 24,
+          "name": "Rukola",
+          "isBought": false
+        },
+        {
+          "id": 22,
+          "name": "Pomidory",
+          "isBought": false
         }
       ]
     },
     {
-      "id": 4,
+      "id": "1",
+      "name": "Owoce",
+      "products": [
+        {
+          "id": 2,
+          "name": "Truskawki",
+          "isBought": false
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Nabiał",
+      "products": [
+        {
+          "id": 33,
+          "name": "Ser feta",
+          "isBought": false
+        },
+        {
+          "id": 32,
+          "name": "Ser żółty",
+          "isBought": false
+        },
+        {
+          "id": 31,
+          "name": "Jajka",
+          "isBought": false
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "name": "Artykuły domowe",
+      "products": [
+        {
+          "id": 72,
+          "name": "Papier do pieczenia",
+          "isBought": false
+        },
+        {
+          "id": 74,
+          "name": "Kostki do zmwarki",
+          "isBought": false
+        }
+      ]
+    },
+    {
+      "id": "4",
       "name": "Mięso",
       "products": [
         {
-          "id": 41,
-          "name": "Kurczak"
+          "id": 42,
+          "name": "Szynka",
+          "isBought": false
         },
         {
-          "id": 42,
-          "name": "Szynka"
+          "id": 41,
+          "name": "Kurczak",
+          "isBought": false
         },
         {
           "id": 43,
-          "name": "Parówki"
-        },
-        {
-          "id": 44,
-          "name": "Łosoś"
+          "name": "Parówki",
+          "isBought": false
         }
       ]
     }
   ],
   "categories": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Owoce",
       "products": [
         {
-          "id": 11,
-          "name": "Jabłka"
-        },
-        {
-          "id": 12,
-          "name": "Banany"
-        },
-        {
-          "id": 13,
-          "name": "Borówki"
-        },
-        {
-          "id": 14,
-          "name": "Rabarbar"
-        },
-        {
-          "id": 15,
-          "name": "Maliny"
-        },
-        {
-          "id": 16,
+          "id": 2,
           "name": "Truskawki"
         },
         {
-          "id": 17,
-          "name": "Brzoskiwnie"
+          "id": 3,
+          "name": "Czereśnie"
         },
         {
-          "id": 18,
-          "name": "Winogrono"
+          "id": 3,
+          "name": "rabarbar"
         }
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Warzywa",
       "products": [
         {
@@ -123,11 +163,15 @@
         {
           "id": 210,
           "name": "Jarmuż"
+        },
+        {
+          "id": 11,
+          "name": "Marchewka"
         }
       ]
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Nabiał",
       "products": [
         {
@@ -153,7 +197,7 @@
       ]
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Mięso",
       "products": [
         {
@@ -175,7 +219,7 @@
       ]
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Mrożonki",
       "products": [
         {
@@ -189,7 +233,7 @@
       ]
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Ryże, kasze, makarony",
       "products": [
         {
@@ -207,7 +251,7 @@
       ]
     },
     {
-      "id": 7,
+      "id": "7",
       "name": "Artykuły domowe",
       "products": [
         {
@@ -229,7 +273,7 @@
       ]
     },
     {
-      "id": 8,
+      "id": "8",
       "name": "Inne",
       "products": [
         {

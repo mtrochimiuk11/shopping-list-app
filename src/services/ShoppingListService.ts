@@ -12,6 +12,14 @@ export function getShoppingList() {
   return apiClient.get('/shoppingList')
 }
 
-export function editShoppingList(list: Array<Object>) {
-  return apiClient.patch('/shoppingList', list)
+export function addShoppingListCategories(categories: Array<Object>) {
+  return apiClient.post('/shoppingList', categories)
+}
+
+export function deleteShoppingListCategory(categoryId: number) {
+  return apiClient.delete(`/shoppingList/${categoryId}`)
+}
+
+export function editShoppingListCategoryProducts(categoryId: number, products: Array<Object>) {
+  return apiClient.patch(`/shoppingList/${categoryId}`, {products})
 }

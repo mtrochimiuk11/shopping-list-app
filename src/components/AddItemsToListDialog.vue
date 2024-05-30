@@ -8,7 +8,7 @@
         <BaseButton
           v-bind="activatorProps"
         >
-          Dodaj kategorię do listy zakupów
+          Dodaj {{ isCategory ? "kategorię" : "produkty"}} 
         </BaseButton>
       </template>
 
@@ -19,10 +19,26 @@
           <v-divider class="mt-3"></v-divider>
 
           <v-card-text class="px-4" style="height: 300px;">
+            <p v-if="items.length === 0" class="mt-4">
+              Brak produktów do dodania
+            </p>
             <v-checkbox 
+              v-else
               v-for="item in items"
               :label="item.name"
-              :value="item.name"
+              :value="isCategory ? 
+              {
+                'id': item.id,
+                'name': item.name,
+                'products': []
+              } 
+              :
+              {
+                'id': item.id,
+                'name': item.name,
+                'isBought': false
+              } 
+              "
               v-model="selected"
             ></v-checkbox>
           </v-card-text>
@@ -38,12 +54,14 @@
             <v-spacer></v-spacer>
 
             <v-btn
+            v-if="items.length !== 0"
               color="surface-variant"
               text="Zapisz"
               variant="flat"
               @click="() => {
-                $emit('editItems');
+                $emit('editItems', selected);
                 isActive.value = false;
+                selected = []
               }"
             ></v-btn>
           </v-card-actions>
@@ -57,7 +75,7 @@
 import BaseButton from '../components/base/BaseButton.vue';
 import { defineProps, ref } from 'vue';
 
-const props = defineProps(['items'])
+const props = defineProps(['items', 'isCategory'])
 const selected = ref<array>([])
 
 </script>

@@ -7,6 +7,8 @@
         :key="category.id" 
         :category="category"
         @delete-category="deleteCategory(category.id)"
+        :isShoppingList="false"
+        :isCategory="true"
       />
     </v-expansion-panels>
     <AddProduct 

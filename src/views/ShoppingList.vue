@@ -6,45 +6,85 @@
         v-for="category in shoppingList" 
         :key="category.id" 
         :category="category"
-        
+        :categoryProducts="categories.find(cat => cat.id === category.id)?.products ?? []"
+        @delete-category="deleteCategory(category.id)"
+        :isShoppingList=true
+        :isCategory="false"
+        :listCategoryProductsIds="listCategoryProductsIds"
       />
     </v-expansion-panels>
-    <AddItemToListDialog :items="formCategories" @edit-items="console.log('aaa')"/>
-    
+    <AddItemToListDialog 
+      :items="formCategories" 
+      :isCategory="true"
+      @edit-items="selected => addCategories(selected)"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, computed } from 'vue';
+import { onMounted, ref, computed, toRaw } from 'vue';
 import CategoryList from '../components/CategoryList.vue';
 import AddItemToListDialog from '../components/AddItemsToListDialog.vue';
-import { getShoppingList } from '../services/ShoppingListService';
+import { getShoppingList, addShoppingListCategories, deleteShoppingListCategory, editShoppingListCategoryProducts } from '../services/ShoppingListService';
 import { getCategories } from '../services/CategoryService'
 
 
 const shoppingList = ref([])
 const categories = ref([]);
 const listCategoriesId = ref([]);
+const listCategoryProductsIds = ref([]);
 
 const formCategories = computed(() => {
   return categories.value.filter(category => !listCategoriesId.value.includes(category.id))
 })
 
+
 onMounted(() => {
-  getShoppingList()
-  .then(response => {
-    console.log(response.data)
-    shoppingList.value = response.data
-  })
-  .then(() => {
-    shoppingList.value.forEach((el) => listCategoriesId.value.push(el.id))
-  })
+  getShoppingListValues();
 
   getCategories()
     .then(response => categories.value = response.data)
 })
 
 
+function getShoppingListValues() {
+  getShoppingList()
+  .then(response => {
+    response.data.forEach(el => {
+      el.products.sort((a,b) => (a.isBought === b.isBought) ? 0 : a.isBought ? 1 : -1)
+    })
+
+    shoppingList.value = response.data
+  })
+  .then(() => {
+    listCategoriesId.value = []
+    shoppingList.value.forEach((el) => {
+      listCategoriesId.value.push(el.id)
+
+      el?.products?.forEach(prod => listCategoryProductsIds.value.push(prod.id))
+    }
+  )
+
+
+  })
+  .catch(e => console.error(e))
+
+}
+
+function addCategories(categories:array) {
+  categories.forEach(category => {
+    addShoppingListCategories(category)
+      .then(() => getShoppingListValues())
+      .catch(e => console.error(e))
+  })
+}
+
+function deleteCategory(CategoryId) {
+  deleteShoppingListCategory(CategoryId)
+    .then(console.log('deleted'))
+    .then(() => getShoppingListValues())
+    .catch(e => console.error(e))
+}
 
 </script>
 
