@@ -16,11 +16,11 @@ export function addCategory(name: string, products: object[]) {
   return apiClient.post('/categories', {name, products})
 }
 
-export function editCategory(categoryId: number) {
+export function editCategory(categoryId: string) {
   return apiClient.delete(`/categories/${categoryId}`)
 }
 
-export function editCategoryProducts(categoryId: number, products: Array<Object>) {
+export function editCategoryProducts(categoryId: string, products: Array<Object>) {
   return apiClient.patch(`/categories/${categoryId}`, {products})
 }
 

@@ -19,12 +19,12 @@
           <v-divider class="mt-3"></v-divider>
 
           <v-card-text class="px-4" style="height: 300px;">
-            <p v-if="items.length === 0" class="mt-4">
+            <p v-if="props?.items?.length === 0" class="mt-4">
               Brak produktów do dodania
             </p>
             <v-checkbox 
               v-else
-              v-for="item in items"
+              v-for="item in props.items"
               :label="item.name"
               :value="isCategory ? 
               {
@@ -54,7 +54,7 @@
             <v-spacer></v-spacer>
 
             <v-btn
-            v-if="items.length !== 0"
+            v-if="items?.length !== 0"
               color="surface-variant"
               text="Zapisz"
               variant="flat"
@@ -74,9 +74,15 @@
 <script setup lang="ts">
 import BaseButton from '../components/base/BaseButton.vue';
 import { defineProps, ref } from 'vue';
+import { Category, Product } from '../types';
 
-const props = defineProps(['items', 'isCategory'])
-const selected = ref<array>([])
+
+const props = defineProps<{
+  items: Array<Category | Product> | undefined,
+  isCategory: boolean | undefined
+}>()
+
+const selected = ref<Array<Product | Category>>([])
 
 </script>
 

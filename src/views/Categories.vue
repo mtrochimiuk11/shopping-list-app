@@ -29,14 +29,14 @@
 </template>
 
 <script setup lang="ts">
+import { Category } from '../types';
 import { onMounted, ref } from 'vue';
 import { getCategories, addCategory, editCategory } from '../services/CategoryService'
 import CategoryList from '../components/CategoryList.vue';
 import AddProduct from '../components/AddProduct.vue';
 import BaseButton from "../components/base/BaseButton.vue";
-import type { Category } from '../components/CategoryList.vue'
 
-let categories = ref<Category[] | null>([]);
+const categories = ref<Category[]>([]);
 
 const isAddingItem = ref<boolean>(false);
 const isEmpty = ref<boolean>(false);
@@ -64,7 +64,7 @@ function addNewCategory(categoryName: string) {
   isEmpty.value = false;
 }
 
-function deleteCategory(categoryId: number) {
+function deleteCategory(categoryId: string) {
   
   editCategory(categoryId)
   .then(() => {

@@ -60,31 +60,21 @@
 </template>
 
 <script setup lang="ts">
+import { Product, Category } from '../types';
 import BaseButoon from './base/BaseButton.vue';
 import BaseDialog from './base/BaseDialog.vue';
 import AddProduct from './AddProduct.vue';
 import AddItemsToListDialog from './AddItemsToListDialog.vue';
 import { editCategoryProducts } from '../services/CategoryService'
 import { editShoppingListCategoryProducts } from '../services/ShoppingListService';
-import { ref, computed, onMounted, watch } from 'vue';
-
-interface Product {
-  id: number;
-  name: string;
-}
-
-export interface Category {
-  id: number;
-  name: string;
-  products: Product[];
-}
+import { ref, computed, watch } from 'vue';
 
 const props = defineProps<{
   category: Category, 
   isShoppingList: boolean, 
   isCategory?: boolean, 
-  categoryProducts?: Array,
-  listCategoryProductsIds?: Array
+  categoryProducts?: Array<Product>,
+  listCategoryProductsIds?: string[]
 }>()
 
 const isAddingItem = ref<boolean>(false);
@@ -93,7 +83,7 @@ const isEmpty = ref<boolean>(false);
 watch(props.category.products, () => props.category.products.sort((a,b) => (a.isBought === b.isBought) ? 0 : a.isBought ? 1 : -1))
 
 const formProducts = computed(() => {
-  return props.categoryProducts.filter(product => !props.listCategoryProductsIds.includes(product.id))
+  return props?.categoryProducts?.filter(product => !props?.listCategoryProductsIds?.includes(product.id))
 })
 
 
@@ -105,9 +95,9 @@ function addProduct(productName: string) {
   }
 
   const categoryProducts = props.category.products;
-  const newProductId = props.category.id.toString() + categoryProducts.length ? (categoryProducts.length + 1).toString() : 1;
+  const newProductId = props.category.id + categoryProducts.length.toString() ? (categoryProducts.length + 1).toString() : "1";
   const newProduct = {
-    "id": Number(newProductId),
+    "id": newProductId,
     "name": productName
   }
 
@@ -127,7 +117,7 @@ function addProduct(productName: string) {
   isEmpty.value = false;
 }
 
-function deleteProduct(productId: number) {
+function deleteProduct(productId: string) {
   const categoryProducts = props.category.products.filter(product => product.id !== productId);
   props.category.products = props.category.products.filter(product => product.id !== productId);
 
@@ -141,7 +131,7 @@ function deleteProduct(productId: number) {
     return;
   }
   
-  props.listCategoryProductsIds.pop(productId)
+  props?.listCategoryProductsIds?.splice(props?.listCategoryProductsIds.indexOf(productId), 1)
   console.log("Deleted: " + productId)
   editShoppingListCategoryProducts(props.category.id, categoryProducts)
     .then((response) => console.log("Success: ", response))
@@ -149,10 +139,10 @@ function deleteProduct(productId: number) {
 
 }
 
-function editShoppingListProducts(categoryId, products) {
+function editShoppingListProducts(categoryId: string, products: Array<Product>) {
   editShoppingListCategoryProducts(categoryId, [...props.category.products, ...products])
-    .then(console.log('success'))
-    .then(props.category.products = [...props.category.products, ...products])
+    .then(() => props.category.products = [...props.category.products, ...products])
+    .catch(e => console.log(e))
 }
 
 </script>

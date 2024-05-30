@@ -6,7 +6,7 @@
         v-for="category in shoppingList" 
         :key="category.id" 
         :category="category"
-        :categoryProducts="categories.find(cat => cat.id === category.id)?.products ?? []"
+        :categoryProducts="categories?.find(cat => cat.id === category.id)?.products ?? []"
         @delete-category="deleteCategory(category.id)"
         :isShoppingList=true
         :isCategory="false"
@@ -22,20 +22,21 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, computed, toRaw } from 'vue';
+import { onMounted, ref, computed } from 'vue';
+import { Category, Product } from '../types';
 import CategoryList from '../components/CategoryList.vue';
 import AddItemToListDialog from '../components/AddItemsToListDialog.vue';
-import { getShoppingList, addShoppingListCategories, deleteShoppingListCategory, editShoppingListCategoryProducts } from '../services/ShoppingListService';
+import { getShoppingList, addShoppingListCategories, deleteShoppingListCategory } from '../services/ShoppingListService';
 import { getCategories } from '../services/CategoryService'
 
 
-const shoppingList = ref([])
-const categories = ref([]);
-const listCategoriesId = ref([]);
-const listCategoryProductsIds = ref([]);
+const shoppingList= ref<Category[] | undefined>([]);
+const categories = ref<Category[] | undefined>([]);
+const listCategoriesId = ref<string[] | undefined>([]);
+const listCategoryProductsIds = ref<string[] | undefined>([]);
 
 const formCategories = computed(() => {
-  return categories.value.filter(category => !listCategoriesId.value.includes(category.id))
+  return categories?.value?.filter(category => !listCategoriesId?.value?.includes(category.id))
 })
 
 
@@ -50,7 +51,7 @@ onMounted(() => {
 function getShoppingListValues() {
   getShoppingList()
   .then(response => {
-    response.data.forEach(el => {
+    response.data.forEach((el: { products: Product[]; }) => {
       el.products.sort((a,b) => (a.isBought === b.isBought) ? 0 : a.isBought ? 1 : -1)
     })
 
@@ -58,10 +59,10 @@ function getShoppingListValues() {
   })
   .then(() => {
     listCategoriesId.value = []
-    shoppingList.value.forEach((el) => {
-      listCategoriesId.value.push(el.id)
+    shoppingList?.value?.forEach((el) => {
+      listCategoriesId?.value?.push(el.id)
 
-      el?.products?.forEach(prod => listCategoryProductsIds.value.push(prod.id))
+      el?.products?.forEach(prod => listCategoryProductsIds?.value?.push(prod.id))
     }
   )
 
@@ -71,7 +72,7 @@ function getShoppingListValues() {
 
 }
 
-function addCategories(categories:array) {
+function addCategories(categories:Array<Category>) {
   categories.forEach(category => {
     addShoppingListCategories(category)
       .then(() => getShoppingListValues())
@@ -79,9 +80,8 @@ function addCategories(categories:array) {
   })
 }
 
-function deleteCategory(CategoryId) {
+function deleteCategory(CategoryId: string) {
   deleteShoppingListCategory(CategoryId)
-    .then(console.log('deleted'))
     .then(() => getShoppingListValues())
     .catch(e => console.error(e))
 }

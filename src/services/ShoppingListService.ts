@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Category, Product } from "../types";
 
 const apiClient = axios.create({
   baseURL: 'http://localhost:3000/',
@@ -12,14 +13,14 @@ export function getShoppingList() {
   return apiClient.get('/shoppingList')
 }
 
-export function addShoppingListCategories(categories: Array<Object>) {
+export function addShoppingListCategories(categories: Array<Category> | Category) {
   return apiClient.post('/shoppingList', categories)
 }
 
-export function deleteShoppingListCategory(categoryId: number) {
+export function deleteShoppingListCategory(categoryId: string) {
   return apiClient.delete(`/shoppingList/${categoryId}`)
 }
 
-export function editShoppingListCategoryProducts(categoryId: number, products: Array<Object>) {
+export function editShoppingListCategoryProducts(categoryId: string, products: Array<Product>) {
   return apiClient.patch(`/shoppingList/${categoryId}`, {products})
 }
