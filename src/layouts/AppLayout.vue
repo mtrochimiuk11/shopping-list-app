@@ -3,14 +3,12 @@
       <Menu></Menu>
   </v-navigation-drawer>
 
-  <v-app-bar :elevation="2">
-    <template v-if="mobile" v-slot:prepend>
+  <v-app-bar :elevation="2" v-if="mobile">
+    <template  v-slot:prepend>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
     </template>
 
-    <template v-slot:append>
-      <v-btn icon="mdi-account"></v-btn>
-    </template>
+  
   </v-app-bar>
 
   <v-main>

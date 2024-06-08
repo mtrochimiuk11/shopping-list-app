@@ -18,19 +18,18 @@
           "id": "21",
           "name": "Ziemniaki",
           "isBought": false
+        },
+        {
+          "id": "24",
+          "name": "Rukola",
+          "isBought": true
         }
       ]
     },
     {
       "id": "1",
       "name": "Owoce",
-      "products": [
-        {
-          "id": "3",
-          "name": "Jabłka",
-          "isBought": false
-        }
-      ]
+      "products": []
     },
     {
       "id": "3",
