@@ -2,7 +2,7 @@ import axios from "axios";
 import { Category, Product } from "../types";
 
 const apiClient = axios.create({
-  baseURL: 'http://localhost:3000/api',
+  baseURL: 'https://shopping-list-appp.onrender.com/api',
   withCredentials: false,
   headers: {
     'Content-Type': 'application/json'
