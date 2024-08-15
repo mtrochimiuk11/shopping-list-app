@@ -24,12 +24,6 @@ const menuItems = [
     icon: 'mdi-shape',
     link: '/categories',
     id: 2
-  },
-  {
-    name: 'Sklepy',
-    icon: 'mdi-store',
-    link: '/shops',
-    id: 3
   }
 ]
 </script>

@@ -13,7 +13,9 @@
                 <span 
                   class="text-body-1 text-lg-h5 my-lg-3"
                   :class="product.isBought ? 'text-decoration-line-through' : ''"
-                >{{ product.name }}</span>
+                >
+                {{ product.name }}
+                </span>
                 <div class="d-flex align-center">
                   <div v-if="isShoppingList">
                     <v-icon v-if="!product.isBought" icon="mdi-check-bold" class="mr-4" 
@@ -132,7 +134,7 @@ function deleteProduct(productId: string) {
   }
   
   props?.listCategoryProductsIds?.splice(props?.listCategoryProductsIds.indexOf(productId), 1)
-  console.log("Deleted: " + productId)
+
   editShoppingListCategoryProducts(props.category.id, categoryProducts)
     .then((response) => console.log("Success: ", response))
     .catch((error) => console.log('Failure', error))
